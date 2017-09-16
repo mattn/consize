@@ -60,7 +60,7 @@ func main() {
 	}
 	defer syscall.CloseHandle(out)
 
-	rect := SMALL_RECT{Left: int16(1), Top: int16(1), Right: int16(col), Bottom: int16(25)}
+	rect := SMALL_RECT{Left: int16(0), Top: int16(0), Right: int16(col - 1), Bottom: int16(24)}
 	r1, _, err := setConsoleWindowInfo.Call(uintptr(out), uintptr(int32(1)), uintptr(unsafe.Pointer(&rect)))
 	if r1 == 0 && err != nil {
 		fatalIf("SetConsoleWindowInfo", err)
